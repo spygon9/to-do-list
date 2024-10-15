@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 
-export const Task = ({name, status}) => {
-    
-    return (
-        <>
-        <p>{name}</p>
-        <div>
-            <button onClick={() => {console.log('Done')}}>Done</button>
-            <button onClick={() => {console.log('Delete')}}>Delete</button>
-        </div>
-        </>
-    )
-}
+export const Task = ({ name, status, markAsDone, deleteTask }) => {
+  return (
+    <>
+      <p style={{ textDecoration: status === 'done' ? 'line-through' : 'none' }}>{name}</p>
+      <div>
+        <button onClick={markAsDone} disabled={status === 'done'}>
+          Done
+        </button>
+        <button onClick={deleteTask}>Delete</button>
+      </div>
+    </>
+  );
+};
